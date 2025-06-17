@@ -1,0 +1,10 @@
+name = "cloudflare-agent-lab"
+main = "src/index.ts"
+compatibility_date = "2025-06-17"
+
+[ai]
+binding = "AI"
+
+[[kv_namespaces]]
+binding = "AGENT_STORE"
+id = "74141e50659d4a458803656a1de5dd1d"
